@@ -1,0 +1,212 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #111111;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #111111;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ef3f3f;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #cf3636;
+}
+
+.main-content {
+    width: 100%;
+}
+
+.header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    background: linear-gradient(to bottom, #232322, #111111);
+}
+
+.header-name {
+    margin: 0;
+    font-size: 3rem;
+    color: #ef3f3f;
+    font-weight: 800;
+}
+
+.header-title {
+    margin: 0;
+    font-size: 2.75rem;
+    color: #ffffff;
+}
+
+.header-image {
+    background-color: white;
+    height: 50%;
+    width: 50%;
+    border-radius: 80px;
+}
+
+.header-about {
+    margin: 0;
+    max-width: 600px;
+    width: 100%;
+    font-size: 1rem;
+    color: white;
+}
+
+.about-me {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.about-me-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skills-title {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #ef3f3f;
+    font-weight: 800;
+    padding: 1rem;
+}
+
+.skill {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.skill:hover {
+    transform: scale(1.05);
+}
+
+/* Experience Section Styles */
+.experience {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.experience-card {
+    background: #232322;
+    border-radius: 16px;
+    width: 340px;
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(239, 63, 63, 0.2);
+}
+
+.experience-image {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    overflow: hidden;
+}
+
+.experience-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.experience-card:hover .experience-image img {
+    transform: scale(1.05);
+}
+
+.experience-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.experience-title {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.5rem;
+    color: #ef3f3f;
+    font-weight: 700;
+}
+
+.experience-company {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.experience-description {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #cccccc;
+    line-height: 1.5;
+}
+
+/* Media Query for Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .experience-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .experience-card {
+        width: 100%;
+        max-width: 340px;
+    }
+}
