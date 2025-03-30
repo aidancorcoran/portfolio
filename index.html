@@ -12,10 +12,24 @@
 <body>
     <div class="main-content">
         <div class="header">
+            <nav>
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul>
+                    <li><a href="#about-me">About Me</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
             <h1 class="header-name">Aidan Corcoran</h1>
             <h2 class="header-title">Software Engineer</h2>
         </div>
-        <div class="about-me">
+        <div id="about-me" class="about-me">
             <h2 class="header-title">About Me</h2>
             <p class="header-about">
                 Hi, I'm Aidan Corcoran — a DevOps Engineer passionate about building end-to-end solutions.
@@ -66,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <div class="experience">
+        <div id="experience" class="experience">
             <h2 class="header-title">Experience</h2>
             
             <div class="experience-container">
@@ -100,5 +114,64 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Existing scroll hide/show code
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                navbar.classList.add('nav-hidden');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('nav-hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Add smooth scrolling for the navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                // Close mobile menu if open
+                if (hamburger.classList.contains('active')) {
+                    toggleMenu();
+                }
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('nav') && navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
+    </script>
 </body>
 </html>
