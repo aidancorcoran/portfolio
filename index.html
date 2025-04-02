@@ -1,190 +1,418 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Staatliches&display=swap" rel="stylesheet">
+    <title>Aidan Corcoran - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Lucide Icon Font Setup */
+      @font-face {
+        font-family: 'LucideIcons';
+        src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
+      }
+      .lucide {
+        font-family: 'LucideIcons';
+        font-size: 1.25rem; /* Adjust size as needed */
+        line-height: 1;
+        display: inline-block;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* Icon Mappings */
+      .lucide-mail::before { content: "\e460"; }
+      .lucide-map-pin::before { content: "\e48b"; }
+      .lucide-github::before { content: "\e3ee"; }
+      .lucide-linkedin::before { content: "\e452"; }
+      .lucide-briefcase::before { content: "\e1c6"; }
+      .lucide-code::before { content: "\e25a"; }
+      .lucide-user::before { content: "\e5b3"; }
+      .lucide-graduation-cap::before { content: "\e3f3"; }
+      .lucide-lightbulb::before { content: "\e44f"; }
+      .lucide-send::before { content: "\e4e1"; }
+      .lucide-menu::before { content: "\e488"; }
+      .lucide-x::before { content: "\e5bd"; }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Custom scrollbar (optional) */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Light grey track */
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a3a3a3; /* Neutral grey thumb */
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #737373; /* Darker grey thumb on hover */
+      }
+
+      /* Style for SVG icons in skills */
+      .skill-icon {
+        width: 1.25rem; /* 20px */
+        height: 1.25rem; /* 20px */
+        margin-right: 0.5rem; /* mr-2 */
+        display: inline-block;
+        vertical-align: middle; /* Align icon with text */
+        filter: grayscale(30%); /* Slightly desaturate icons */
+        opacity: 0.85;
+      }
+      /* Ensure icons inherit text color for consistency */
+      .skill-icon path {
+          fill: currentColor;
+      }
+    </style>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Indigo/Teal Theme
+                        primary: '#4f46e5',    // Indigo-600
+                        secondary: '#14b8a6',  // Teal-500
+                        dark: '#1e293b',       // Slate-800
+                        light: '#f8fafc',      // Slate-50
+                        'primary-hover': '#4338ca', // Indigo-700
+                        'secondary-hover': '#0d9488', // Teal-600
+                        'gradient-from': '#e0e7ff', // Indigo-100
+                        'gradient-to': '#ccfbf1', // Teal-100
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <div class="main-content">
-        <div class="header">
-            <nav>
-                <button class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+<body class="bg-light text-dark font-sans antialiased">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-primary hover:text-secondary transition duration-300">Aidan Corcoran</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-slate-600 hover:text-primary transition duration-300">About</a>
+                <a href="#skills" class="text-slate-600 hover:text-primary transition duration-300">Skills</a>
+                <a href="#experience" class="text-slate-600 hover:text-primary transition duration-300">Experience</a>
+                <a href="#projects" class="text-slate-600 hover:text-primary transition duration-300">Projects</a>
+                <a href="#contact" class="text-slate-600 hover:text-primary transition duration-300">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-slate-600 focus:outline-none">
+                    <span class="lucide lucide-menu text-2xl"></span>
                 </button>
-                <ul>
-                    <li><a href="#about-me">About Me</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <h1 class="header-name">Aidan Corcoran</h1>
-            <h2 class="header-title">Software Engineer</h2>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 absolute top-full left-0 w-full shadow-lg">
+            <a href="#about" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">About</a>
+            <a href="#skills" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Skills</a>
+            <a href="#experience" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Experience</a>
+            <a href="#projects" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Projects</a>
+            <a href="#contact" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Contact</a>
         </div>
-        <div id="about-me" class="about-me">
-            <h2 class="header-title">About Me</h2>
-            <p class="header-about">
-                Hi, I'm Aidan Corcoran — a DevOps Engineer passionate about building end-to-end solutions.
-                I specialize in cloud infrastructure and optimizing deployment pipelines,
-                and I've built and launched an iOS app, and I'm now working on a full-stack cybersecurity webapp and a goal-tracking app.
-            </p>
-            <h3 class="skills-title">Skills</h3>
-            <div class="about-me-skills">
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" />
-                    <p class="skill-text">Python</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/go/00ADD8" alt="Go" />
-                    <p class="skill-text">Go</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/swift/FA7343" alt="Swift" />
-                    <p class="skill-text">Swift</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/c/00599C" alt="C" />
-                    <p class="skill-text">C</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" />
-                    <p class="skill-text">JavaScript</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5" />
-                    <p class="skill-text">HTML</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/css3/1572B6" alt="CSS3" />
-                    <p class="skill-text">CSS</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker" />
-                    <p class="skill-text">Docker</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes" />
-                    <p class="skill-text">Kubernetes</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="GCP" />
-                    <p class="skill-text">GCP</p>
+    </header>
+
+    <main>
+        <section id="home" class="bg-gradient-to-r from-gradient-from to-gradient-to min-h-[calc(100vh-64px)] flex items-center justify-center py-20 px-6">
+            <div class="text-center max-w-3xl">
+                <h1 class="text-5xl md:text-7xl font-bold text-dark mb-4 leading-tight">Aidan Corcoran</h1>
+                <p class="text-2xl md:text-3xl text-primary font-medium mb-8">Software Engineer</p>
+                <p class="text-lg text-slate-700 mb-10">Building innovative solutions with a focus on scalability, performance, and user experience. Passionate about automation and cloud technologies.</p>
+                <a href="#projects" class="bg-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-primary-hover transition duration-300 text-lg inline-block">View My Work</a>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 px-6 bg-white">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
+                    <span class="lucide lucide-user mr-3 text-primary"></span>About Me
+                </h2>
+                <div class="text-center text-lg text-slate-700 space-y-6 leading-relaxed">
+                    <p>
+                        I'm a Software Engineer based in Toronto, Canada, with a Bachelor's degree in Computer Engineering from the University of Guelph.
+                        My experience spans full-stack development, DevOps, and cloud infrastructure management.
+                    </p>
+                    <p>
+                        Currently, I work as a Jr DevOps Engineer at Afflo, optimizing organ allocation processes through infrastructure migration (Azure to GCP, Terraform to Pulumi), implementing GitOps with Argo CD/Kargo, and enhancing Kubernetes cluster management.
+                    </p>
+                    <p>
+                        On the side, I'm the Technical Founder at UpSurge Technology Inc., where I'm leading the development of FrameMax, an AI-powered fitness app. I architected the system (Swift iOS frontend, Node.js/Express backend) and manage its cloud infrastructure using IaC.
+                    </p>
+                    <p>
+                        Previously, I gained valuable experience as a Solutions Developer at Shore Consulting Group, enhancing operational efficiency for businesses through IT solutions and contributing to Kubernetes Operator development.
+                    </p>
+                     <p>
+                        Beyond coding, I enjoy rock climbing, camping, traveling, and strength training. I'm always eager to learn new technologies and tackle challenging problems.
+                    </p>
                 </div>
             </div>
-        </div>
-        <div id="experience" class="experience">
-            <h2 class="header-title">Experience</h2>
-            
-            <div class="experience-container">
-                <div class="experience-card">
-                    <div class="experience-image">
-                        <img src="/api/placeholder/150/150" alt="DevOps Engineer" />
+        </section>
+
+        <section id="skills" class="py-20 px-6 bg-slate-50">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
+                     <span class="lucide lucide-code mr-3 text-primary"></span>Skills & Technologies
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-dark mb-4">Programming Languages</h3>
+                        <ul class="space-y-3 text-slate-700">
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" alt="Python Logo" class="skill-icon text-secondary"><span class="align-middle">Python</span></li>
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/swift.svg" alt="Swift Logo" class="skill-icon text-secondary"><span class="align-middle">Swift</span></li>
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/go.svg" alt="Go Logo" class="skill-icon text-secondary"><span class="align-middle">Go</span></li>
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/c.svg" alt="C Logo" class="skill-icon text-secondary"><span class="align-middle">C</span></li>
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" alt="JavaScript Logo" class="skill-icon text-secondary"><span class="align-middle">JavaScript</span></li>
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg" alt="Node.js Logo" class="skill-icon text-secondary"><span class="align-middle">Node.js / Express</span></li>
+                        </ul>
                     </div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">DevOps Engineer</h3>
-                        <p class="experience-company">Current Role</p>
-                        <p class="experience-description">
-                            Specializing in cloud infrastructure, deployment pipelines, and process automation. 
-                            Responsible for optimizing CI/CD workflows and maintaining robust cloud architecture.
-                        </p>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-dark mb-4">Technologies & Tools</h3>
+                        <ul class="space-y-3 text-slate-700">
+                            <li class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pulumi.svg" alt="Pulumi Logo" class="skill-icon text-secondary">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/terraform.svg" alt="Terraform Logo" class="skill-icon text-secondary !ml-0 !mr-2">
+                                <span class="align-middle">Pulumi, Terraform (IaC)</span>
+                            </li>
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ansible.svg" alt="Ansible Logo" class="skill-icon text-secondary"><span class="align-middle">Ansible</span></li>
+                            <li class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/argo.svg" alt="Argo CD Logo" class="skill-icon text-secondary">
+                                <span class="align-middle ml-1">Argo CD, Kargo (GitOps)</span>
+                            </li>
+                             <li class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftazure.svg" alt="Azure Logo" class="skill-icon text-secondary">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlecloud.svg" alt="GCP Logo" class="skill-icon text-secondary !ml-0 !mr-2">
+                                <span class="align-middle">Azure, GCP (Cloud)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" alt="Kubernetes Logo" class="skill-icon text-secondary">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" alt="Docker Logo" class="skill-icon text-secondary !ml-0 !mr-2">
+                                <span class="align-middle">Kubernetes, Docker</span>
+                            </li>
+                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg" alt="PostgreSQL Logo" class="skill-icon text-secondary"><span class="align-middle">PostgreSQL</span></li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="experience-card">
-                    <div class="experience-image">
-                        <img src="images/framemax.jpg" alt="Framemax" />
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 px-6 bg-white">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
+                    <span class="lucide lucide-briefcase mr-3 text-primary"></span>Work Experience
+                </h2>
+                <div class="space-y-10">
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md border-l-4 border-primary">
+                        <h3 class="text-2xl font-semibold text-dark mb-1">UpSurge Technology Inc.</h3>
+                        <p class="text-lg text-primary font-medium mb-2">Technical Founder (FrameMax)</p>
+                        <p class="text-sm text-slate-500 mb-4">Dec 2024 - Present</p>
+                        <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Lead technical direction and full-stack development (Swift iOS, Node.js/Express backend) for FrameMax, an AI fitness app.</li>
+                            <li>Architected and implemented scalable cloud infrastructure using IaC (Pulumi, GCP).</li>
+                            <li>Managed user authentication, encrypted biometric data handling, and AI feature integration.</li>
+                            <li>Grew product from MVP to live release with active monthly users.</li>
+                        </ul>
                     </div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">Technical Founder</h3>
-                        <p class="experience-company">UPSURGE TECHNOLOGY INC</p>
-                        <p class="experience-description">
-                            Developed Framemax (available on the App Store), handling all aspects from backend and frontend 
-                            Swift development to database design and infrastructure management.
-                        </p>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md border-l-4 border-secondary">
+                        <h3 class="text-2xl font-semibold text-dark mb-1">Afflo</h3>
+                        <p class="text-lg text-secondary font-medium mb-2">Jr DevOps Engineer</p>
+                        <p class="text-sm text-slate-500 mb-4">May 2024 - Present</p>
+                         <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Migrated release management from Ansible to Argo CD/Kargo, improving visibility.</li>
+                            <li>Led Azure to GCP migration using Pulumi, cutting cloud costs by 30%.</li>
+                            <li>Built and managed high-availability Kubernetes clusters for scalable deployments.</li>
+                            <li>Automated monitoring, backups, and deployment pipelines using Python/Bash.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md border-l-4 border-indigo-300">
+                        <h3 class="text-2xl font-semibold text-dark mb-1">Shore Consulting Group</h3>
+                        <p class="text-lg text-indigo-600 font-medium mb-2">Solutions Developer</p>
+                        <p class="text-sm text-slate-500 mb-4">Jun 2022 - Apr 2024</p>
+                         <ul class="list-disc list-inside text-slate-700 space-y-2">
+                            <li>Migrated IaC from Terraform to Pulumi for enhanced language flexibility.</li>
+                            <li>Developed Ansible templates to automate CI/CD workflows.</li>
+                            <li>Integrated Argo CD with Kubernetes for reliable GitOps automation via GitLab YAML.</li>
+                            <li>Contributed to building a Kubernetes Operator for application management.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="mt-16 pt-10 border-t border-slate-200">
+                     <h2 class="text-3xl font-bold text-center text-dark mb-8 flex items-center justify-center">
+                         <span class="lucide lucide-graduation-cap mr-3 text-primary"></span>Education
+                    </h2>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md text-center max-w-md mx-auto">
+                         <h3 class="text-xl font-semibold text-dark mb-1">University of Guelph</h3>
+                         <p class="text-lg text-primary font-medium mb-2">Bachelor of Computer Engineering</p>
+                         <p class="text-sm text-slate-500">Sep 2019 - Apr 2024 | Guelph, Canada</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 px-6 bg-slate-50">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
+                     <span class="lucide lucide-lightbulb mr-3 text-primary"></span>Projects
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                         <img src="https://placehold.co/600x400/4f46e5/ffffff?text=FrameMax+App" alt="FrameMax Project" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                         <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-semibold text-dark mb-3">FrameMax</h3>
+                            <p class="text-slate-700 mb-4 flex-grow">An AI-powered iOS app designed to track physique progress and provide personalized fitness coaching. Features include secure biometric data handling, AI analysis, and a user-friendly interface.</p>
+                             <p class="text-sm text-slate-500 mb-4"><strong>Tech Stack:</strong> Swift (iOS), Node.js, Express, PostgreSQL, Pulumi, GCP, Docker</p>
+                            <div class="mt-auto">
+                                <a href="https://www.framemax.app/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary font-medium inline-flex items-center transition duration-300">
+                                    View Project <span class="ml-1">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                        <img src="https://placehold.co/600x400/14b8a6/ffffff?text=GDrive+CLI" alt="GDrive CLI Tool Project" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-semibold text-dark mb-3">Gdrive CLI Tool</h3>
+                            <p class="text-slate-700 mb-4 flex-grow">A command-line tool written in Go that allows developers to integrate with Google Drive quickly and efficiently directly from their terminal.</p>
+                             <p class="text-sm text-slate-500 mb-4"><strong>Tech Stack:</strong> Go, Google Drive API, Cobra CLI</p>
+                            <div class="mt-auto">
+                                <a href="https://github.com/aidancorcoran/gdrive" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary font-medium inline-flex items-center transition duration-300">
+                                    View Project <span class="ml-1">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 px-6 bg-white">
+            <div class="container mx-auto max-w-3xl text-center">
+                <h2 class="text-4xl font-bold text-dark mb-8 flex items-center justify-center">
+                    <span class="lucide lucide-send mr-3 text-primary"></span>Get In Touch
+                </h2>
+                <p class="text-lg text-slate-700 mb-10">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out directly or use the form below!
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8 mb-16">
+                    <a href="mailto:aidancorcoran.dev@gmail.com" class="inline-flex items-center text-lg text-primary hover:text-secondary transition duration-300 break-all">
+                        <span class="lucide lucide-mail mr-2 flex-shrink-0"></span> aidancorcoran.dev@gmail.com
+                    </a>
+                    <a href="https://github.com/aidancorcoran" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-lg text-primary hover:text-secondary transition duration-300">
+                        <span class="lucide lucide-github mr-2 flex-shrink-0"></span> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/aidan-corcoran-99b691203/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-lg text-primary hover:text-secondary transition duration-300">
+                        <span class="lucide lucide-linkedin mr-2 flex-shrink-0"></span> LinkedIn
+                    </a>
+                    <div class="inline-flex items-center text-lg text-slate-700">
+                        <span class="lucide lucide-map-pin mr-2 text-primary flex-shrink-0"></span> Toronto, Canada
                     </div>
                 </div>
 
-                <div class="experience-card">
-                    <div class="experience-image">
-                        <img src="images/framemax.jpg" alt="Framemax" />
-                    </div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">Solutions Developer</h3>
-                        <p class="experience-company">Shore Consulting Group</p>
-                        <p class="experience-description">
-                            Solutions developer and implemented various solutions to improve software lifecycle.
-                        </p>
-                    </div>
+                <div class="max-w-xl mx-auto bg-slate-50 p-8 rounded-lg shadow-md text-left">
+                    <h3 class="text-2xl font-semibold text-dark mb-6 text-center">Send me a Message</h3>
+                    <form action="https://formspree.io/f/mgvanaer" method="POST">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your Name"
+                                       class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="Your Email"
+                                       class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out">
+                                <input type="hidden" name="_replyto" value="">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Message Subject"
+                                   class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Your message..."
+                                      class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit"
+                                    class="bg-primary text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
                 </div>
+
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-slate-400 py-6 px-6 text-center">
+        <p>&copy; <span id="current-year"></span> Aidan Corcoran. All rights reserved.</p>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        // Existing scroll hide/show code
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('nav');
-        
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down
-                navbar.classList.add('nav-hidden');
-            } else {
-                // Scrolling up
-                navbar.classList.remove('nav-hidden');
-            }
-            
-            lastScrollTop = scrollTop;
+        // Mobile Menu Toggle Logic
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuButton.querySelector('span');
+
+        menuButton.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('lucide-menu', isHidden);
+            menuIcon.classList.toggle('lucide-x', !isHidden);
         });
 
-        // Add smooth scrolling for the navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                // Close mobile menu if open
-                if (hamburger.classList.contains('active')) {
-                    toggleMenu();
-                }
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop,
-                    behavior: 'smooth'
-                });
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.add('lucide-menu');
+                menuIcon.classList.remove('lucide-x');
             });
         });
-        
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('nav ul');
-        
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        }
-        
-        hamburger.addEventListener('click', toggleMenu);
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('nav') && navMenu.classList.contains('active')) {
-                toggleMenu();
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Close mobile menu if clicked outside
+        document.addEventListener('click', (event) => {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnButton = menuButton.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.add('lucide-menu');
+                menuIcon.classList.remove('lucide-x');
             }
         });
-    });
+
+        // --- Removed Mailto Logic ---
+        // The form now submits directly to the Formspree URL defined in the form's action attribute.
+        // No JavaScript is needed for basic Formspree submission.
+
+        // Optional: Set the _replyto hidden field dynamically (improves Formspree reply functionality)
+        const emailInput = document.getElementById('email');
+        const replyToInput = document.querySelector('input[name="_replyto"]');
+        if (emailInput && replyToInput) {
+            emailInput.addEventListener('input', function() {
+                replyToInput.value = this.value;
+            });
+        }
+
     </script>
+
 </body>
 </html>
