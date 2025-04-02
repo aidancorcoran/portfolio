@@ -1,6 +1,6 @@
 # Aidan Corcoran - Personal Portfolio Website
 
-[![CI/CD Status](https://github.com/aidancorcoran/aidancorcoran.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/aidancorcoran/aidancorcoran.github.io/actions/workflows/deploy.yml)
+[![CI/CD Status](https://github.com/aidancorcoran/portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/aidancorcoran/portfolio/actions/workflows/deploy.yml)
 This repository contains the source code for my personal portfolio website, showcasing my skills, professional experience, and projects as a Software Engineer based in Toronto, Canada.
 
 🌐 **Live Demo:** [https://aidancorcoran.dev](https://aidancorcoran.dev)
