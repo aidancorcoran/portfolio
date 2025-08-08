@@ -1,407 +1,422 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aidan Corcoran - Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* Lucide Icon Font Setup */
-      @font-face {
-        font-family: 'LucideIcons';
-        src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
-      }
-      .lucide {
-        font-family: 'LucideIcons';
-        font-size: 1.25rem; /* Adjust size as needed */
-        line-height: 1;
-        display: inline-block;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      /* Icon Mappings */
-      .lucide-mail::before { content: "\e460"; }
-      .lucide-map-pin::before { content: "\e48b"; }
-      .lucide-github::before { content: "\e3ee"; }
-      .lucide-linkedin::before { content: "\e452"; }
-      .lucide-briefcase::before { content: "\e1c6"; }
-      .lucide-code::before { content: "\e25a"; }
-      .lucide-user::before { content: "\e5b3"; }
-      .lucide-graduation-cap::before { content: "\e3f3"; }
-      .lucide-lightbulb::before { content: "\e44f"; }
-      .lucide-send::before { content: "\e4e1"; }
-      .lucide-menu::before { content: "\e488"; }
-      .lucide-x::before { content: "\e5bd"; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aidan Corcoran — Software Engineer</title>
 
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
+  <script src="https://cdn.tailwindcss.com"></script>
 
-      /* Custom scrollbar (optional) */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1; /* Light grey track */
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #a3a3a3; /* Neutral grey thumb */
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #737373; /* Darker grey thumb on hover */
-      }
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"] },
+          colors: {
+            primary: "#4f46e5",
+            secondary: "#14b8a6",
+            dark: "#0B1220",
+            light: "#f8fafc",
+            muted: "#0f172a",
+          },
+          boxShadow: {
+            soft: "0 10px 30px -12px rgba(79,70,229,0.3)",
+          },
+          backgroundImage: {
+            grid: "radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0)",
+            noise: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"140\" viewBox=\"0 0 140 140\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.04\"/></svg>')",
+          },
+          keyframes: {
+            fadeUp: { from: { opacity: 0, transform: "translateY(12px)" }, to: { opacity: 1, transform: "translateY(0)" } },
+            float: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-6px)" } },
+          },
+          animation: {
+            fadeUp: "fadeUp 600ms ease-out forwards",
+            float: "float 6s ease-in-out infinite",
+          },
+        },
+      },
+      darkMode: "class",
+    };
+  </script>
 
-      /* Style for SVG icons in skills */
-      .skill-icon {
-        width: 1.25rem; /* 20px */
-        height: 1.25rem; /* 20px */
-        margin-right: 0.5rem; /* mr-2 */
-        display: inline-block;
-        vertical-align: middle; /* Align icon with text */
-        filter: grayscale(30%); /* Slightly desaturate icons */
-        opacity: 0.85;
-      }
-      /* Ensure icons inherit text color for consistency */
-      .skill-icon path {
-          fill: currentColor;
-      }
-    </style>
-    <link rel="preconnect" href="https://rsms.me/">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        // Indigo/Teal Theme
-                        primary: '#4f46e5',    // Indigo-600
-                        secondary: '#14b8a6',  // Teal-500
-                        dark: '#1e293b',       // Slate-800
-                        light: '#f8fafc',      // Slate-50
-                        'primary-hover': '#4338ca', // Indigo-700
-                        'secondary-hover': '#0d9488', // Teal-600
-                        'gradient-from': '#e0e7ff', // Indigo-100
-                        'gradient-to': '#ccfbf1', // Teal-100
-                    }
-                }
-            }
-        }
-    </script>
+  <style>
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar{ width: 10px } ::-webkit-scrollbar-thumb{ background:#3b3b3b30; border-radius:10px }
+
+    /* Fancy underline for active nav links */
+    .nav-link { position: relative; }
+    .nav-link:after { content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background: linear-gradient(90deg,#4f46e5,#14b8a6); transition: width .3s; border-radius:2px }
+    .nav-link:hover:after, .nav-link.active:after { width:100% }
+
+    /* Card gradient border */
+    .card { position: relative; }
+    .card:before { content:""; position:absolute; inset:0; padding:1px; border-radius:1rem; background:linear-gradient(135deg,rgba(79,70,229,.5),rgba(20,184,166,.5)); -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none }
+  </style>
 </head>
-<body class="bg-light text-dark font-sans antialiased">
+<body class="bg-dark text-slate-100 font-sans antialiased relative">
+  <!-- Decorative background -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-[radial-gradient(60rem_40rem_at_10%_-10%,rgba(79,70,229,.15),transparent_60%),radial-gradient(50rem_30rem_at_90%_10%,rgba(20,184,166,.15),transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-grid bg-[size:22px_22px]"></div>
+    <div class="absolute inset-0 bg-noise"></div>
+  </div>
 
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="text-xl font-bold text-primary hover:text-secondary transition duration-300">Aidan Corcoran</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="#about" class="text-slate-600 hover:text-primary transition duration-300">About</a>
-                <a href="#skills" class="text-slate-600 hover:text-primary transition duration-300">Skills</a>
-                <a href="#experience" class="text-slate-600 hover:text-primary transition duration-300">Experience</a>
-                <a href="#projects" class="text-slate-600 hover:text-primary transition duration-300">Projects</a>
-                <a href="#contact" class="text-slate-600 hover:text-primary transition duration-300">Contact</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-slate-600 focus:outline-none">
-                    <span class="lucide lucide-menu text-2xl"></span>
-                </button>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 absolute top-full left-0 w-full shadow-lg">
-            <a href="#about" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">About</a>
-            <a href="#skills" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Skills</a>
-            <a href="#experience" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Experience</a>
-            <a href="#projects" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Projects</a>
-            <a href="#contact" class="block px-6 py-2 text-slate-600 hover:bg-slate-100 hover:text-primary transition duration-300">Contact</a>
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-dark/55 border-b border-white/10">
+    <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="text-lg md:text-xl font-semibold flex items-center gap-2">
+        <img src="assets/profile.jpg" alt="Portrait of Aidan Corcoran" class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-white" loading="eager">
+        <span class="hidden sm:inline">Aidan Corcoran</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#about" class="nav-link text-slate-300 hover:text-white transition">About</a>
+        <a href="#skills" class="nav-link text-slate-300 hover:text-white transition">Skills</a>
+        <a href="#experience" class="nav-link text-slate-300 hover:text-white transition">Experience</a>
+        <a href="#projects" class="nav-link text-slate-300 hover:text-white transition">Projects</a>
+        <a href="#contact" class="nav-link text-slate-300 hover:text-white transition">Contact</a>
+      </div>
+      <div class="flex items-center gap-2 md:gap-3">
+        <button id="themeToggle" aria-label="Toggle theme" class="rounded-lg border border-white/10 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-white/20">
+          <span>☾</span>
+        </button>
+        <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-white"><i data-lucide="menu" class="text-2xl"></i></button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="md:hidden hidden border-t border-white/10 bg-dark/90 backdrop-blur">
+      <div class="container mx-auto px-6 py-3 grid gap-2">
+        <a class="block py-2 nav-link" href="#about">About</a>
+        <a class="block py-2 nav-link" href="#skills">Skills</a>
+        <a class="block py-2 nav-link" href="#experience">Experience</a>
+        <a class="block py-2 nav-link" href="#projects">Projects</a>
+        <a class="block py-2 nav-link" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="relative overflow-hidden">
+      <div class="container mx-auto px-6 py-20 md:py-28 grid items-center gap-10 md:grid-cols-2">
+        <div class="space-y-6 [animation-delay:80ms] opacity-0 translate-y-3 will-change-transform" data-animate>
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
+            Building reliable systems with <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">DevOps precision</span>
+          </h1>
+          <p class="text-slate-300 text-lg md:text-xl max-w-prose">
+            Software Engineer focused on cloud infrastructure, Kubernetes, and product-minded automation. Based in Toronto, Canada.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="#projects" class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-secondary px-5 py-3 font-semibold text-white shadow-soft transition hover:scale-[1.02] active:scale-[.99]">
+              View my work →
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-5 py-3 font-semibold text-slate-200 hover:bg-white/5">
+              Get in touch
+            </a>
+          </div>
+          <div class="flex items-center gap-6 pt-4 text-slate-300">
+            <a href="mailto:aidancorcoran.dev@gmail.com" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="mail"></i>Email</a>
+            <a href="https://github.com/aidancorcoran" target="_blank" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="github"></i>GitHub</a>
+            <a href="https://www.linkedin.com/in/aidan-corcoran-99b691203/" target="_blank" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="linkedin"></i>LinkedIn</a>
+          </div>
         </div>
-    </header>
-
-    <main>
-        <section id="home" class="bg-gradient-to-r from-gradient-from to-gradient-to min-h-[calc(100vh-64px)] flex items-center justify-center py-20 px-6">
-            <div class="text-center max-w-3xl">
-                <h1 class="text-5xl md:text-7xl font-bold text-dark mb-4 leading-tight">Aidan Corcoran</h1>
-                <p class="text-2xl md:text-3xl text-primary font-medium mb-8">Software Engineer</p>
-                <p class="text-lg text-slate-700 mb-10">Building innovative solutions with a focus on scalability, performance, and user experience. Passionate about automation and cloud technologies.</p>
-                <a href="#projects" class="bg-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-primary-hover transition duration-300 text-lg inline-block">View My Work</a>
-            </div>
-        </section>
-
-        <section id="about" class="py-20 px-6 bg-white">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
-                    <span class="lucide lucide-user mr-3 text-primary"></span>About Me
-                </h2>
-                <div class="text-center text-lg text-slate-700 space-y-6 leading-relaxed">
-                    <p>
-                        I am a Software Engineer based in Toronto, Canada, with a Bachelor's degree in Computer Engineering from the University of Guelph.
-                        My experience spans full-stack development, DevOps, and cloud infrastructure management.
-                    </p>
-                    <p>
-                        Currently, I am employed as a Jr DevOps Engineer at Afflo, optimizing organ allocation processes through infrastructure migration (Azure to GCP, Terraform to Pulumi), implementing GitOps with Argo CD/Kargo, and enhancing Kubernetes cluster management.
-                    </p>
-                    <p>
-                        I built an iOS App, FrameMax — an AI-powered fitness app. I designed the system architecture, built the iOS frontend in Swift, and developed the backend using Node.js/Express. I also manage the cloud infrastructure using Pulumi.
-                    </p>
-                    <p>
-                        Previously, I gained valuable experience as a Solutions Developer at Shore Consulting Group, enhancing operational efficiency for businesses through IT solutions and contributing to Kubernetes Operator development.
-                    </p>
-                     <p>
-                        Beyond coding, I enjoy rock climbing, camping, travelling, and strength training. I am always eager to learn new technologies and tackle challenging problems.
-                    </p>
+        <div class="relative order-first md:order-none [animation-delay:150ms] opacity-0 translate-y-3 will-change-transform" data-animate>
+          <!-- Glass card with gradient ring -->
+          <div class="relative mx-auto max-w-sm">
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/60 to-secondary/60 blur-lg opacity-70"></div>
+            <div class="relative rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+              <div class="mx-auto h-28 w-28 overflow-hidden rounded-2xl ring-2 ring-white/10">
+                <img src="assets/profile.jpg" alt="Portrait of Aidan Corcoran" class="h-full w-full object-cover" loading="eager">
+              </div>
+              <div class="mt-6 space-y-2 text-center">
+                <h2 class="text-xl font-semibold">Aidan Corcoran</h2>
+                <p class="text-slate-300">Software Engineer • DevOps</p>
+              </div>
+              <div class="mt-6 grid grid-cols-3 gap-3 text-center text-sm">
+                <div class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
+                  <div class="font-semibold">K8s</div>
+                  <div class="text-slate-400">Clusters</div>
                 </div>
-            </div>
-        </section>
-
-        <section id="skills" class="py-20 px-6 bg-slate-50">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
-                     <span class="lucide lucide-code mr-3 text-primary"></span>Skills & Technologies
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-semibold text-dark mb-4">Programming Languages</h3>
-                        <ul class="space-y-3 text-slate-700">
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" alt="Python Logo" class="skill-icon text-secondary"><span class="align-middle">Python</span></li>
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/swift.svg" alt="Swift Logo" class="skill-icon text-secondary"><span class="align-middle">Swift</span></li>
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/go.svg" alt="Go Logo" class="skill-icon text-secondary"><span class="align-middle">Go</span></li>
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/c.svg" alt="C Logo" class="skill-icon text-secondary"><span class="align-middle">C</span></li>
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" alt="JavaScript Logo" class="skill-icon text-secondary"><span class="align-middle">JavaScript</span></li>
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg" alt="Node.js Logo" class="skill-icon text-secondary"><span class="align-middle">Node.js / Express</span></li>
-                        </ul>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-semibold text-dark mb-4">Technologies & Tools</h3>
-                        <ul class="space-y-3 text-slate-700">
-                            <li class="flex items-center">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pulumi.svg" alt="Pulumi Logo" class="skill-icon text-secondary">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/terraform.svg" alt="Terraform Logo" class="skill-icon text-secondary !ml-0 !mr-2">
-                                <span class="align-middle">Pulumi, Terraform (IaC)</span>
-                            </li>
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ansible.svg" alt="Ansible Logo" class="skill-icon text-secondary"><span class="align-middle">Ansible</span></li>
-                            <li class="flex items-center">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/argo.svg" alt="Argo CD Logo" class="skill-icon text-secondary">
-                                <span class="align-middle ml-1">Argo CD, Kargo (GitOps)</span>
-                            </li>
-                             <li class="flex items-center">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftazure.svg" alt="Azure Logo" class="skill-icon text-secondary">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlecloud.svg" alt="GCP Logo" class="skill-icon text-secondary !ml-0 !mr-2">
-                                <span class="align-middle">Azure, GCP (Cloud)</span>
-                            </li>
-                            <li class="flex items-center">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" alt="Kubernetes Logo" class="skill-icon text-secondary">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" alt="Docker Logo" class="skill-icon text-secondary !ml-0 !mr-2">
-                                <span class="align-middle">Kubernetes, Docker</span>
-                            </li>
-                            <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg" alt="PostgreSQL Logo" class="skill-icon text-secondary"><span class="align-middle">PostgreSQL</span></li>
-                        </ul>
-                    </div>
+                <div class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
+                  <div class="font-semibold">GCP</div>
+                  <div class="text-slate-400">Infra</div>
                 </div>
-            </div>
-        </section>
-
-        <section id="experience" class="py-20 px-6 bg-white">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
-                    <span class="lucide lucide-briefcase mr-3 text-primary"></span>Work Experience
-                </h2>
-                <div class="space-y-10">
-                    <div class="bg-slate-50 p-6 rounded-lg shadow-md border-l-4 border-secondary">
-                        <h3 class="text-2xl font-semibold text-dark mb-1">Afflo</h3>
-                        <p class="text-lg text-secondary font-medium mb-2">Jr DevOps Engineer</p>
-                        <p class="text-sm text-slate-500 mb-4">May 2024 - Present</p>
-                         <ul class="list-disc list-inside text-slate-700 space-y-2">
-                            <li>Migrated release management from Ansible to Argo CD/Kargo, improving visibility.</li>
-                            <li>Led Azure to GCP migration using Pulumi, cutting cloud costs by 30%.</li>
-                            <li>Built and managed high-availability Kubernetes clusters for scalable deployments.</li>
-                            <li>Automated monitoring, backups, and deployment pipelines using Python/Bash.</li>
-                        </ul>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-lg shadow-md border-l-4 border-indigo-300">
-                        <h3 class="text-2xl font-semibold text-dark mb-1">Shore Consulting Group</h3>
-                        <p class="text-lg text-indigo-600 font-medium mb-2">Solutions Developer</p>
-                        <p class="text-sm text-slate-500 mb-4">Jun 2022 - Apr 2024</p>
-                         <ul class="list-disc list-inside text-slate-700 space-y-2">
-                            <li>Migrated IaC from Terraform to Pulumi for enhanced language flexibility.</li>
-                            <li>Developed Ansible templates to automate CI/CD workflows.</li>
-                            <li>Integrated Argo CD with Kubernetes for reliable GitOps automation via GitLab YAML.</li>
-                            <li>Contributed to building a Kubernetes Operator for application management.</li>
-                        </ul>
-                    </div>
+                <div class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
+                  <div class="font-semibold">Argo</div>
+                  <div class="text-slate-400">GitOps</div>
                 </div>
-                 <div class="mt-16 pt-10 border-t border-slate-200">
-                     <h2 class="text-3xl font-bold text-center text-dark mb-8 flex items-center justify-center">
-                         <span class="lucide lucide-graduation-cap mr-3 text-primary"></span>Education
-                    </h2>
-                    <div class="bg-slate-50 p-6 rounded-lg shadow-md text-center max-w-md mx-auto">
-                         <h3 class="text-xl font-semibold text-dark mb-1">University of Guelph</h3>
-                         <p class="text-lg text-primary font-medium mb-2">Bachelor of Computer Engineering</p>
-                         <p class="text-sm text-slate-500">Sep 2019 - Apr 2024 | Guelph, Canada</p>
-                    </div>
-                 </div>
+              </div>
             </div>
-        </section>
+            <div class="absolute -right-6 -top-6 h-16 w-16 rounded-xl bg-gradient-to-br from-primary to-secondary opacity-80 animate-float"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="projects" class="py-20 px-6 bg-slate-50">
-            <div class="container mx-auto max-w-5xl">
-                <h2 class="text-4xl font-bold text-center text-dark mb-12 flex items-center justify-center">
-                     <span class="lucide lucide-lightbulb mr-3 text-primary"></span>Projects
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-                         <img src="https://placehold.co/600x400/4f46e5/ffffff?text=FrameMax+App" alt="FrameMax Project" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
-                         <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-semibold text-dark mb-3">FrameMax</h3>
-                            <p class="text-slate-700 mb-4 flex-grow">An AI-powered iOS app designed to track physique progress and provide personalized fitness coaching. Features include secure biometric data handling, AI analysis, and a user-friendly interface.</p>
-                             <p class="text-sm text-slate-500 mb-4"><strong>Tech Stack:</strong> Swift (iOS), Node.js, Express, PostgreSQL, Pulumi, GCP, Docker</p>
-                            <div class="mt-auto">
-                                <a href="https://www.framemax.app/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary font-medium inline-flex items-center transition duration-300">
-                                    View Project <span class="ml-1">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-                        <img src="https://placehold.co/600x400/14b8a6/ffffff?text=GDrive+CLI" alt="GDrive CLI Tool Project" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-semibold text-dark mb-3">Gdrive CLI Tool</h3>
-                            <p class="text-slate-700 mb-4 flex-grow">A command-line tool written in Go that allows developers to integrate with Google Drive quickly and efficiently directly from their terminal.</p>
-                             <p class="text-sm text-slate-500 mb-4"><strong>Tech Stack:</strong> Go, Google Drive API, Cobra CLI</p>
-                            <div class="mt-auto">
-                                <a href="https://github.com/aidancorcoran/gdrive" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary font-medium inline-flex items-center transition duration-300">
-                                    View Project <span class="ml-1">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- ABOUT -->
+    <section id="about" class="py-20">
+      <div class="container mx-auto max-w-5xl px-6">
+        <h2 class="mb-10 text-center text-3xl md:text-4xl font-bold [animation-delay:50ms] opacity-0 translate-y-3" data-animate>
+          <i data-lucide="user" class="mr-3 text-primary"></i> About Me
+        </h2>
+        <div class="card relative rounded-2xl bg-white/5 p-8 backdrop-blur border border-white/10 [animation-delay:120ms] opacity-0 translate-y-3" data-animate>
+          <div class="prose prose-invert max-w-none">
+            <p>I’m a Software Engineer based in Toronto with a B.Eng in Computer Engineering from the University of Guelph. I build and operate cloud-native systems with a product mindset—balancing developer velocity, reliability, and cost.</p>
+            <p class="mt-4">Currently at <strong>Afflo</strong>, I work across DevOps and product engineering—shipping features, hardening infra, and pushing GitOps/Kubernetes best practices.</p>
+            <p class="mt-4">I also built <strong>FrameMax</strong>, an AI-powered iOS fitness app. I designed the architecture, wrote the Swift UI, shipped the Node/Express backend, and manage infra with Pulumi.</p>
+            <p class="mt-4">Previously at <strong>Shore Consulting Group</strong>, I improved operational efficiency, helped build a Kubernetes Operator, and delivered IaC migrations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-20">
+      <div class="container mx-auto max-w-6xl px-6">
+        <h2 class="mb-10 text-center text-3xl md:text-4xl font-bold [animation-delay:50ms] opacity-0 translate-y-3" data-animate>
+          <i data-lucide="code" class="mr-3 text-primary"></i> Skills & Technologies
+        </h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="card rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur [animation-delay:80ms] opacity-0 translate-y-3" data-animate>
+            <h3 class="mb-4 text-xl font-semibold">Programming</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Python</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Swift</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Go</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">C</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">JavaScript</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Node.js / Express</span>
             </div>
-        </section>
-
-        <section id="contact" class="py-20 px-6 bg-white">
-            <div class="container mx-auto max-w-3xl text-center">
-                <h2 class="text-4xl font-bold text-dark mb-8 flex items-center justify-center">
-                    <span class="lucide lucide-send mr-3 text-primary"></span>Get In Touch
-                </h2>
-                <p class="text-lg text-slate-700 mb-10">
-                    I am always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out directly or use the form below!
-                </p>
-                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8 mb-16">
-                    <a href="mailto:aidancorcoran.dev@gmail.com" class="inline-flex items-center text-lg text-primary hover:text-secondary transition duration-300 break-all">
-                        <span class="lucide lucide-mail mr-2 flex-shrink-0"></span> aidancorcoran.dev@gmail.com
-                    </a>
-                    <a href="https://github.com/aidancorcoran" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-lg text-primary hover:text-secondary transition duration-300">
-                        <span class="lucide lucide-github mr-2 flex-shrink-0"></span> GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/aidan-corcoran-99b691203/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-lg text-primary hover:text-secondary transition duration-300">
-                        <span class="lucide lucide-linkedin mr-2 flex-shrink-0"></span> LinkedIn
-                    </a>
-                    <div class="inline-flex items-center text-lg text-slate-700">
-                        <span class="lucide lucide-map-pin mr-2 text-primary flex-shrink-0"></span> Toronto, Canada
-                    </div>
-                </div>
-
-                <div class="max-w-xl mx-auto bg-slate-50 p-8 rounded-lg shadow-md text-left">
-                    <h3 class="text-2xl font-semibold text-dark mb-6 text-center">Send me a Message</h3>
-                    <form action="https://formspree.io/f/mgvanaer" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-                                <input type="text" id="name" name="name" required placeholder="Your Name"
-                                       class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                                <input type="email" id="email" name="email" required placeholder="Your Email"
-                                       class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out">
-                                <input type="hidden" name="_replyto" value="">
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <label for="subject" class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
-                            <input type="text" id="subject" name="subject" required placeholder="Message Subject"
-                                   class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out">
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                            <textarea id="message" name="message" rows="4" required placeholder="Your message..."
-                                      class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-primary focus:border-primary transition duration-150 ease-in-out"></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit"
-                                    class="bg-primary text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
+          </div>
+          <div class="card rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur [animation-delay:110ms] opacity-0 translate-y-3" data-animate>
+            <h3 class="mb-4 text-xl font-semibold">Tools & Platforms</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+              <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Pulumi • Terraform</span>
+              <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Argo CD • Kargo</span>
+              <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Azure • GCP</span>
+              <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Kubernetes • Docker</span>
+              <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Ansible</span>
+              <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">PostgreSQL</span>
             </div>
-        </section>
-    </main>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer class="bg-dark text-slate-400 py-6 px-6 text-center">
-        <p>&copy; <span id="current-year"></span> Aidan Corcoran. All rights reserved.</p>
-    </footer>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-20">
+      <div class="container mx-auto max-w-5xl px-6">
+        <h2 class="mb-12 text-center text-3xl md:text-4xl font-bold [animation-delay:50ms] opacity-0 translate-y-3" data-animate>
+          <i data-lucide="briefcase" class="mr-3 text-primary"></i> Work Experience
+        </h2>
 
-    <script>
-        // Mobile Menu Toggle Logic
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = menuButton.querySelector('span');
+        <!-- Timeline -->
+        <div class="relative pl-6">
+          <div class="absolute left-2 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-white/10 to-secondary/60"></div>
 
-        menuButton.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.toggle('hidden');
-            menuIcon.classList.toggle('lucide-menu', isHidden);
-            menuIcon.classList.toggle('lucide-x', !isHidden);
-        });
+          <!-- NEW: Promotion -->
+          <article class="relative mb-10 [animation-delay:60ms] opacity-0 translate-y-3" data-animate>
+            <div class="absolute -left-[7px] top-2 h-3 w-3 rounded-full bg-gradient-to-br from-primary to-secondary"></div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <header class="flex items-baseline justify-between gap-4">
+                <h3 class="text-xl font-semibold">Afflo • <span class="text-slate-300">Solutions Engineer</span></h3>
+                <span class="text-sm text-slate-400">Aug 2025 – Present</span>
+              </header>
+              <ul class="mt-3 list-disc pl-5 text-slate-200/90 space-y-2">
+                <li>Shifted from pure DevOps to product development—shipping backend features and integrations alongside infra ownership.</li>
+                <li>Designed and executed disaster recovery plans (backup/restore, cross‑region replicas, runbooks, failover drills).</li>
+                <li>Standardized environment promotion and release gates with Argo CD/Kargo; improved MTTR with alerting & SLO dashboards.</li>
+                <li>Partnered with stakeholders to scope, prototype, and deliver solutions that reduce operational toil and cloud spend.</li>
+              </ul>
+            </div>
+          </article>
 
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.add('lucide-menu');
-                menuIcon.classList.remove('lucide-x');
-            });
-        });
+          <article class="relative mb-10 [animation-delay:80ms] opacity-0 translate-y-3" data-animate>
+            <div class="absolute -left-[7px] top-2 h-3 w-3 rounded-full bg-gradient-to-br from-primary to-secondary"></div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <header class="flex items-baseline justify-between gap-4">
+                <h3 class="text-xl font-semibold">Afflo • <span class="text-slate-300">Jr DevOps Engineer</span></h3>
+                <span class="text-sm text-slate-400">May 2024 – Aug 2025</span>
+              </header>
+              <ul class="mt-3 list-disc pl-5 text-slate-200/90 space-y-2">
+                <li>Migrated release management from Ansible to Argo CD/Kargo for transparent, reproducible deploys.</li>
+                <li>Led Azure → GCP migration with Pulumi; reduced cloud costs by ~30%.</li>
+                <li>Built HA Kubernetes clusters and automated monitoring/backups.</li>
+              </ul>
+            </div>
+          </article>
 
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+          <article class="relative mb-2 [animation-delay:120ms] opacity-0 translate-y-3" data-animate>
+            <div class="absolute -left-[7px] top-2 h-3 w-3 rounded-full bg-gradient-to-br from-primary to-secondary"></div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <header class="flex items-baseline justify-between gap-4">
+                <h3 class="text-xl font-semibold">Shore Consulting Group • <span class="text-slate-300">Solutions Developer</span></h3>
+                <span class="text-sm text-slate-400">Jun 2022 – Apr 2024</span>
+              </header>
+              <ul class="mt-3 list-disc pl-5 text-slate-200/90 space-y-2">
+                <li>Terraform → Pulumi migration to unlock typed IaC and code reuse.</li>
+                <li>Automated CI/CD with Ansible and GitLab; integrated Argo CD for GitOps.</li>
+                <li>Contributed to a Kubernetes Operator for app lifecycle management.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
 
-        // Close mobile menu if clicked outside
-        document.addEventListener('click', (event) => {
-            const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnButton = menuButton.contains(event.target);
+        <!-- Education -->
+        <div class="mt-16">
+          <h3 class="mb-6 text-center text-2xl font-bold"><i data-lucide="graduation-cap" class="mr-2 text-primary"></i> Education</h3>
+          <div class="card mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+            <div class="text-lg font-semibold">University of Guelph</div>
+            <div class="text-primary/90">Bachelor of Computer Engineering</div>
+            <div class="text-sm text-slate-400">Sep 2019 – Apr 2024 • Guelph, Canada</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.add('lucide-menu');
-                menuIcon.classList.remove('lucide-x');
-            }
-        });
+    <!-- PROJECTS -->
+    <section id="projects" class="py-20">
+      <div class="container mx-auto max-w-6xl px-6">
+        <h2 class="mb-12 text-center text-3xl md:text-4xl font-bold [animation-delay:50ms] opacity-0 translate-y-3" data-animate>
+          <i data-lucide="lightbulb" class="mr-3 text-primary"></i> Projects
+        </h2>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <article class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:scale-[1.01] [animation-delay:80ms] opacity-0 translate-y-3" data-animate>
+            <div class="aspect-[16/9] w-full overflow-hidden">
+              <img class="h-full w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop" alt="FrameMax" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold">FrameMax</h3>
+              <p class="mt-2 text-slate-300">AI-powered iOS app for physique tracking with secure biometrics, guided analysis, and cloud-native backend.</p>
+              <p class="mt-3 text-sm text-slate-400"><strong>Stack:</strong> Swift, Node/Express, PostgreSQL, Pulumi, GCP, Docker</p>
+              <a href="https://www.framemax.app/" target="_blank" class="mt-4 inline-flex items-center gap-1 text-primary hover:text-white">View project →</a>
+            </div>
+          </article>
 
-        // --- Removed Mailto Logic ---
-        // The form now submits directly to the Formspree URL defined in the form's action attribute.
-        // No JavaScript is needed for basic Formspree submission.
+          <article class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:scale-[1.01] [animation-delay:110ms] opacity-0 translate-y-3" data-animate>
+            <div class="aspect-[16/9] w-full overflow-hidden">
+              <img class="h-full w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="GDrive CLI" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold">GDrive CLI Tool</h3>
+              <p class="mt-2 text-slate-300">Terminal-first Google Drive utility written in Go for quick file ops and scripting.</p>
+              <p class="mt-3 text-sm text-slate-400"><strong>Stack:</strong> Go, Google Drive API, Cobra CLI</p>
+              <a href="https://github.com/aidancorcoran/gdrive" target="_blank" class="mt-4 inline-flex items-center gap-1 text-primary hover:text-white">View project →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        // Optional: Set the _replyto hidden field dynamically (improves Formspree reply functionality)
-        const emailInput = document.getElementById('email');
-        const replyToInput = document.querySelector('input[name="_replyto"]');
-        if (emailInput && replyToInput) {
-            emailInput.addEventListener('input', function() {
-                replyToInput.value = this.value;
-            });
-        }
+    <!-- CONTACT -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto max-w-4xl px-6 text-center">
+        <h2 class="mb-8 text-3xl md:text-4xl font-bold [animation-delay:50ms] opacity-0 translate-y-3" data-animate>
+          <i data-lucide="send" class="mr-3 text-primary"></i> Get In Touch
+        </h2>
+        <p class="mx-auto mb-10 max-w-2xl text-slate-300">
+          Open to roles, collaborations, and interesting problems. Use the form or reach out directly.
+        </p>
+        <div class="mb-10 flex flex-wrap items-center justify-center gap-4">
+          <a href="mailto:aidancorcoran.dev@gmail.com" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-slate-200 hover:bg-white/5"><i data-lucide="mail"></i> aidancorcoran.dev@gmail.com</a>
+          <a href="https://github.com/aidancorcoran" target="_blank" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-slate-200 hover:bg-white/5"><i data-lucide="github"></i> GitHub</a>
+          <span class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-slate-200"><i data-lucide="map-pin"></i> Toronto, Canada</span>
+        </div>
 
-    </script>
+        <div class="card mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-8 text-left backdrop-blur [animation-delay:100ms] opacity-0 translate-y-3" data-animate>
+          <h3 class="mb-6 text-2xl font-semibold text-white text-center">Send me a message</h3>
+          <form action="https://formspree.io/f/mgvanaer" method="POST" class="grid gap-5">
+            <div class="grid gap-5 md:grid-cols-2">
+              <div>
+                <label for="name" class="mb-1 block text-sm text-slate-300">Name</label>
+                <input id="name" name="name" required placeholder="Your name" class="w-full rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white placeholder:text-slate-400 focus:border-primary focus:outline-none" />
+              </div>
+              <div>
+                <label for="email" class="mb-1 block text-sm text-slate-300">Email</label>
+                <input id="email" name="email" type="email" required placeholder="Your email" class="w-full rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white placeholder:text-slate-400 focus:border-primary focus:outline-none" />
+                <input type="hidden" name="_replyto" value="" />
+              </div>
+            </div>
+            <div>
+              <label for="subject" class="mb-1 block text-sm text-slate-300">Subject</label>
+              <input id="subject" name="subject" required placeholder="Message subject" class="w-full rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white placeholder:text-slate-400 focus:border-primary focus:outline-none" />
+            </div>
+            <div>
+              <label for="message" class="mb-1 block text-sm text-slate-300">Message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Your message..." class="w-full rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white placeholder:text-slate-400 focus:border-primary focus:outline-none"></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-3 font-semibold text-white shadow-soft transition hover:scale-[1.01]">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="border-t border-white/10 bg-black/30 py-6 text-center text-slate-400">
+    © <span id="year"></span> Aidan Corcoran. All rights reserved.
+  </footer>
+
+  <!-- Lucide official runtime (replaces data-lucide with inline SVG) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (dark only by default, toggle for light)
+    const html = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    if (stored === 'light') html.classList.remove('dark'); else html.classList.add('dark');
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Mobile menu toggle
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => {
+      const hidden = mobileMenu.classList.toggle('hidden');
+      // swap menu icon
+      const iconName = hidden ? 'menu' : 'x';
+      const btnIcon = menuButton.querySelector('svg');
+      if (btnIcon) btnIcon.remove();
+      const el = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      el.setAttribute('width','24'); el.setAttribute('height','24'); el.setAttribute('viewBox','0 0 24 24'); el.setAttribute('fill','none'); el.setAttribute('stroke','currentColor'); el.setAttribute('stroke-width','2'); el.setAttribute('stroke-linecap','round'); el.setAttribute('stroke-linejoin','round');
+      el.innerHTML = lucide.icons[iconName].toSvg().replace(/^<svg[^>]*>|<\/svg>$/g,'');
+      menuButton.prepend(el);
+    });
+
+    // Active nav highlight on scroll
+    const sections = [...document.querySelectorAll('section[id]')];
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const setActive = () => {
+      const scrollPos = window.scrollY + 100;
+      let current = sections[0]?.id;
+      sections.forEach(sec => { if (scrollPos >= sec.offsetTop) current = sec.id; });
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    };
+    window.addEventListener('scroll', setActive); setActive();
+
+    // Reveal on scroll animations
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('animate-fadeUp'); entry.target.style.opacity = 1; entry.target.style.transform = 'none'; reveal.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-animate]').forEach((el) => reveal.observe(el));
+
+    // Improve Formspree reply-to
+    const emailInput = document.getElementById('email');
+    const replyToInput = document.querySelector('input[name="_replyto"]');
+    if (emailInput && replyToInput) emailInput.addEventListener('input', function(){ replyToInput.value = this.value; });
+
+    // Render Lucide icons
+    lucide.createIcons();
+  </script>
 </body>
 </html>
